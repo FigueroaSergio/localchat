@@ -5,10 +5,11 @@ block content
   .container
     .col-12.col-lg-8.offset-lg-2 
       .row
-        .card.text-dark.bg-light 
+        #chat.card.text-dark.bg-light 
       .row.justify-content-center    
-        form#form(action="/chat", method="post") 
-          input#inputMsg.form-control(type="text" name="msg")
-          
-          button#send.btn.btn-primary(type="submit") >>
-       
+        form.row#form(action="/chat", method="post") 
+          .col-10
+            input#inputMsg.form-control(type="text" name="msg")
+          .col-2
+            button#send.btn.btn-primary(type="submit") >>
+      

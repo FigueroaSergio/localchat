@@ -1,19 +1,31 @@
 var express = require('express');
 var router = express.Router();
 var msgs=[]
-
+var size=0
 router.get("/", (req,res)=>{
   res.json(msgs) 
+  console.log(size)
 })
 router.post('/', function(req, res, next) {
-  console.log(req.body)
+  // console.log(req.body)
   let msg ={"from":"sergio", "msg":req.body.msg}
   msgs.push(msg)
-  console.log(msg)
+  
+  size++
+  console.log(size)
   res.json(msg)
- 
-});
+  
 
+});
+router.get("/:msg", (req,res)=>{
+  let act = req.params.msg
+  // console.log(act)
+  
+  let news=msgs.slice(act,size)
+  // console.log(news)
+  
+  res.json(news)
+})
 
 
 module.exports = router;
