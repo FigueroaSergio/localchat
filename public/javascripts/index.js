@@ -1,7 +1,15 @@
-const sendBtn= document.getElementById("send")
-const text= document.getElementById("text")
-// sendBtn.onclick=()=>{
-//     fetch("http://localhost:3000/send")
-//     .then(res=>res.json())
-//     .then(data=>console.log(data))
-// }
+const form= document.getElementById("form")
+const inputMsg = document.getElementById("inputMsg")
+form.addEventListener("submit",event=>{
+    
+    
+    event.preventDefault()
+    let msg = inputMsg.value
+    fetch("/chat",{
+        method:"POST",
+        body:new URLSearchParams({
+            "msg":msg
+        })
+    }).then(res=>res.json())
+    .then(dato=>console.log(dato))
+})

@@ -7,8 +7,8 @@ block content
       .row
         .card.text-dark.bg-light 
       .row.justify-content-center    
-        form(action="/chat", method="post") 
-          input#text.form-control(type="text" name="msg")
+        form#form(action="/chat", method="post") 
+          input#inputMsg.form-control(type="text" name="msg")
           
           button#send.btn.btn-primary(type="submit") >>
        
