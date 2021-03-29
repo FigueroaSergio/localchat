@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1 Chat
-  
+  h3 Chat
+  .container
+    .col-12.col-lg-8.offset-lg-2 
+      .row
+        .card.text-dark.bg-light 
+      .row.justify-content-center    
+        form(action="/chat", method="post") 
+          input#text.form-control(type="text" name="msg")
+          
+          button#send.btn.btn-primary(type="submit") >>
+       
