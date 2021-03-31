@@ -87,10 +87,11 @@ function render(msgs) {
         m.textContent = msg 
         
         if (from==user){
+        
             row.style.textAlign="right"
         }
         
-        row.classList.add("col-12")
+        row.classList.add("msg")
         row.appendChild(f)
         row.appendChild(m)
         row.appendChild(hour)

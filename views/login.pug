@@ -4,15 +4,15 @@ block content
     .container 
         #login.row.justify-content-center
             .col-12.col-md-10.col-lg-8
-                .card.text-center.text-white.bg-dark
+                .card.text-center.text-white.bg-light
                     .card-header
-                        h2 Login
+                        h2 Acceso
                     .card-body
                         .row.justify-content-center
                             .col-3.col-sm-2.col-xl-1
-                                input(type="color" class="form-control form-control-color" id="color" value="#563d7c" title="Choose your color")
+                                input(type="color" class="form-control form-control-color" id="color" value="#00EFD1" title="Choose your color")
                             .col-9.col-sm-10.col-sm-9.col-lg-8.col-xl-8
-                                input#inputUser.form-control(type="text" name="user")
+                                input#inputUser.form-control(type="text" name="user" placeholder="Nombre")
                             
                     .card-body
                         a#btnLogin.btn.btn-primary(type="button"  onclick="saveUser()") login

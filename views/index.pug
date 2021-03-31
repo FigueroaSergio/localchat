@@ -1,19 +1,18 @@
 extends layout.pug
 
 block content
-  h5 Chat
   .container
     .col-12.col-lg-8.offset-lg-2 
       .row
         .card.text-dark.bg-light 
           #chat
           
-          button.btn.btn-primary#btnDown(type="button" onclick="goDown()") v
+          img.btn.btn-primary#btnDown(src="/images/rowdown.svg"  onclick="goDown()") 
       .row.justify-content-center    
         .col-10
           input#inputMsg.form-control(type="text" name="msg")
         .col-2
-          button#send.btn.btn-primary(type="button"  onclick="sendMSG()") >>
+          img.btn.btn-primary(src="/images/row.svg" alt="50" width='50' height='34' onclick="sendMSG()")
   
       
   script(src='/javascripts/index.js') 
