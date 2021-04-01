@@ -1,55 +1,30 @@
-const form = document.getElementById("form")
 const inputMsg = document.getElementById("inputMsg")
 const chat = document.getElementById("chat")
 const fragment = document.createDocumentFragment()
 const btnDown =document.getElementById("btnDown")
+const total = document.getElementById("totla")
 
-const user = sessionStorage.getItem("user")
-const myColor =sessionStorage.getItem("color")
+var act = 0
 
-const myHeader = new Headers()
-myHeader.append("user", user)
-const goDown=()=>{
-    chat.scrollTop=chat.scrollHeight
-}
+
 const checkPageFocus=()=>{
     // console.log (`${chat.scrollTop} ${chat.scrollHeight}`)
     if ((chat.scrollTop) > (chat.scrollHeight-575)){
         btnDown.style.display="none"      
-           
-       goDown()
+        goDown()
     }
     else{
         btnDown.style.display="block"
     }
 }
-    
-    
-    
-setInterval(checkPageFocus, 500);
-var msgs = []
-var act = 0
-const getMsgs = () => {
-    fetch(`/chat/${act}`, {
-        method: "GET",
-        headers: myHeader
-    }).then(res => res.json())
-        .then(newMsgs => {
 
-            if (newMsgs.err) {
-                console.log(newMsgs.err)
-                window.location.assign("/login")
-            } else {
-
-                act = act + newMsgs.length
-                // console.log(msgs)
-                render(newMsgs)
-            }
-
-        })
-}
 setInterval("getMsgs()", 1000)
+setInterval(checkPageFocus, 500);
+
+const goDown=()=>{ chat.scrollTop=chat.scrollHeight}
+
 inputMsg.onkeypress = (e) => { if (e.key == "Enter") { sendMSG() } }
+
 const sendMSG=() => {
 
 
@@ -57,21 +32,21 @@ const sendMSG=() => {
     let msg = inputMsg.value
     inputMsg.value = ""
     let date = new Date()
-    
-    fetch(`/chat`, {
-        method: "POST",
-        body: new URLSearchParams({
+    let data={
             "from": user,
             "msg": msg,
             "color":myColor,
             "date":date
-        }),
-        headers: myHeader
-    }).then(res => res.json())
-        .then(dato => {
-            // console.log(dato)
-
-        })
+        }
+    post("/chat",data)
+    
+}
+const getMsgs = () => {
+    get(`/chat/${act}`,
+    (data)=>{
+        act=act+data.length
+        render(data)
+     })
 }
 function render(msgs) {
     for (ms of msgs) {

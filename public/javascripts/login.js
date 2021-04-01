@@ -1,10 +1,18 @@
+
+
 const inputUser = document.getElementById("inputUser")
 const color = document.getElementById("color")
-        function saveUser(){
+const loginForm = document.getElementById("login")
+loginForm.addEventListener("submit",e=>{
+//se puede llamar y utilizar variables de otro js 
+            // que este por encima de donde se cargo este
+          
+            
             let user = inputUser.value
             let micolor = color.value
-            sessionStorage.setItem  ("color",micolor)
+            
             sessionStorage.setItem  ("user",user)
-            window.location.assign("/")
-        }
-        inputUser.onkeypress = (e) => { if (e.key == "Enter") { saveUser() } }
+            sessionStorage.setItem  ("color",micolor)
+            
+})
+

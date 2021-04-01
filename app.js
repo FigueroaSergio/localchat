@@ -23,7 +23,34 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+const verifyuser=(req,res,next)=>{
+  let user=req.headers.user
 
+  // console.log(req.headers.user)
+ 
+  if(user==""||user==null||user=="null"){
+    console.log("you are not authorized")
+    res.render("login")
+  }else{
+       next() 
+    } 
+  
+}
+app.post('/login', function(req, res, next) {
+  let user =req.body.user
+  
+  if(user==""||user==null||user=="null"){
+    console.log("you are not authorized")
+    res.render("login")
+  }
+  else{
+    
+    res.render("index")
+ } 
+});
+
+
+app.use(verifyuser)
 app.use('/', indexRouter);
 app.use('/chat', chatRouter);
 

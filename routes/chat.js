@@ -2,16 +2,8 @@ var express = require('express');
 var router = express.Router();
 var msgs = []
 var size = 0
-const verifyuser=(req,res,next)=>{
-  let user=req.headers.user
-  if(user=="null" || user==""){
-    res.json({ err: "you are unauthorize" })
-  }else{
-    next()
-  }
-  
-}
-router.use(verifyuser)
+
+
 router.get("/", (req, res) => {
   res.json(msgs)
   console.log(size)
