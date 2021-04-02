@@ -5,8 +5,8 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('index');
 });
-router.get('/login', function(req, res, next) {
-  res.render('login');
-});
-
+router.get("/logout",(req,res)=>{
+res.clearCookie("user")
+res.redirect("/login")
+})
 module.exports = router;
