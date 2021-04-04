@@ -24,6 +24,27 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 
+const verifyuser=(req,res,next)=>{
+  let user=req.cookies.user
+  if(user=="null" || user==""||user==null){
+    res.render("login")
+  }else{
+    next()
+  }
+
+}
+app.get('/login', function(req, res, next) {
+ console.log(req.cookies)
+	res.render('login');
+});
+app.post("/login",(req,res)=>{
+let user = req.body.user
+console.log(user)
+res.cookie("user",user)
+
+res.redirect("/")
+})
+app.use(verifyuser)
 app.use('/', indexRouter);
 app.use('/chat', chatRouter);
 

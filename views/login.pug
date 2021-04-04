@@ -8,14 +8,12 @@ block content
                     .card-header
                         h2 Acceso
                     .card-body
-                        .row.justify-content-center
+                        form.row.justify-content-center(action="/login" method="POST")
                             .col-3.col-sm-2.col-xl-1
                                 input(type="color" class="form-control form-control-color" id="color" value="#00EFD1" title="Choose your color")
                             .col-9.col-sm-10.col-sm-9.col-lg-8.col-xl-8
                                 input#inputUser.form-control(type="text" name="user" placeholder="Nombre")
-                            
-                    .card-body
-                        a#btnLogin.btn.btn-primary(type="button"  onclick="saveUser()") login
+                            button#btnLogin.btn.btn-primary(type="submit"  onclick="saveUser()") login
     script(src='/javascripts/login.js') 
         
          
